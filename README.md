@@ -1,8 +1,8 @@
 # aio
 
-ubuntu 16.4
-1  apt-get update
-2  apt-get dist-upgrade
+ubuntu 16.4 
+1  apt-get update 
+2  apt-get dist-upgrade 
 3  reboot
 4  git clone https://opendev.org/openstack/openstack-ansible     /opt/openstack-ansible
 5  cd /opt/openstack-ansible/
