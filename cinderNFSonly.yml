@@ -1,0 +1,31 @@
+setup NFS mount somewhere, then use below instructions:
+
+/etc/openstack_deploy/conf.d/cinder.yml
+storage_hosts:
+  aio1:
+    ip: 172.29.236.100
+    container_vars:
+      cinder_backends:
+        limit_container_types: cinder_volume
+        lvm:
+          volume_group: cinder-volumes
+          volume_driver: cinder.volume.drivers.lvm.LVMVolumeDriver
+          volume_backend_name: LVM_iSCSI
+          iscsi_ip_address: "172.29.236.100"
+          lvm_type: "thin"
+          extra_volume_types:
+            - low-iops
+            - high-iops
+            - ultra-high-iops
+        nfs-volume1:
+          volume_backend_name: NFS_VOLUME1
+          volume_driver: cinder.volume.drivers.nfs.NfsDriver
+          nfs_shares_config: /etc/cinder/nfs_shares_volume1
+          nfs_mount_options: "rsize=65535,wsize=65535,timeo=1200,actimeo=120"
+          shares:
+          - { ip: "192.168.0.40", share: "/var/nfs/general" }
+
+>>>>create this on aio host
+mkdir /etc/cinder
+/etc/cinder/nfs_shares_volume1
+192.168.0.40:/var/nfs/general
