@@ -1,5 +1,5 @@
 # aio
-
+https://docs.openstack.org/openstack-ansible/latest/user/aio/quickstart.html ..
 ubuntu 16.4  
 1  apt-get update  
 2  apt-get dist-upgrade  
